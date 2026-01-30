@@ -24,7 +24,7 @@ type apiConfig struct {
 //go:embed static/*
 var staticFiles embed.FS
 
-func main(){
+func main() {
 	err := godotenv.Load(".env")
 	if err != nil {
 		log.Printf("warning: assuming default configuration. .env unreadable: %v", err)
@@ -45,7 +45,7 @@ func main(){
 		log.Println("Running without CRUD endpoints")
 	} else {
 		db, err := sql.Open("libsql", dbURL)
-		if err!=nil {
+		if err != nil {
 			log.Fatal(err)
 		}
 		dbQueries := database.New(db)
@@ -53,7 +53,7 @@ func main(){
 		log.Println("Connected to database!")
 	}
 
-	router := 
+	router :=
 		chi.NewRouter()
 
 	router.Use(cors.Handler(cors.Options{
