@@ -35,3 +35,6 @@ jobs:
           go-version: "1.25.1"
       - name: Run formatter
         run: test -z $(go fmt ./...)
+
+      - name: Run staticcheck
+        run: go fmt ./... && staticcheck ./...
