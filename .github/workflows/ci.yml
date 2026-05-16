@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Install gosec
         run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+
+      - name: Security check
+        run: gosec ./...
       - name: Check out code
         uses: actions/checkout@v4
         
@@ -22,9 +25,6 @@ jobs:
           
       - name: Run tests
         run: go test ./... -cover
-          
-      - name: Security check
-        run: gosec ./...
           
   style:
     name: Style
